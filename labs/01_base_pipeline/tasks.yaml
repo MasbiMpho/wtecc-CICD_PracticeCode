@@ -30,4 +30,4 @@ spec:
     - name: checkout
       image: bitnami/git:latest
       command: [git]
-      args: ["clone", "--branch", "(params.branch)","(params.repo-url)"]
+      args: ["clone", "--branch", "$(params.branch)", "$(params.repo-url)"]
