@@ -10,6 +10,7 @@ spec:
     - name: branch
       default: master
     - name: build-image
+    - name: app-name
   tasks:
     - name: init
       workspaces:
@@ -76,7 +77,7 @@ spec:
         name: openshift-client
         kind: ClusterTask
       params:
-      - name: message
-        value: "Deploying $(params.branch) branch of $(params.repo-url) ..."
+      - name: SCRIPT
+        value: "oc create deploy $(params.app-name) --image=$(params.build-image)"
       runAfter:
         - build
